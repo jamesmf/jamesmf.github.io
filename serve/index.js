@@ -68,7 +68,7 @@ async function init(){
   await getJSON();
   x = inner_to_x2_x1(charMap, x2_len, x1_len);
   document.getElementById('micro_out_div').innerText = "name:\n";
-  for (iter = 0; iter < 1; iter++){
+  for (iter = 0; iter < 100; iter++){
       update_text(model, x, charRev, '', '');
   }
 }
@@ -77,7 +77,7 @@ function inner_to_x2_x1(charMap, lenx2, lenx1){
   
   console.log(charMap);
   var name = document.getElementById('rec_name').innerText;
-  var txt = "\nname:\n\n"+name;
+  var txt = "\nname:\n\n"+name+"\n";
   var mapped = []
   for (var i = 0; i < lenx2; i++){
     mapped.push(0);
@@ -129,9 +129,6 @@ function update_text(model, x, charRev, text_elem, prob_elem){
   next_char = charRev[ind];
   x[0] = x[0].slice([0, 1],[1, x[0].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
   x[1] = x[1].slice([0, 1],[1, x[1].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
-  if (next_char == "\n"){
-    next_char = "<br>";
-  }
   document.getElementById('micro_out_div').innerText += next_char;
 }
 
