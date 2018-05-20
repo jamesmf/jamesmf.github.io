@@ -82,10 +82,9 @@ function inner_to_x2_x1(charMap, lenx2, lenx1){
   for (var i = 0; i < lenx2; i++){
     mapped.push(0);
   }
-  //TODO: this is backwards
-  for (var i = 0; i < txt.length; i++){
-    console.log(txt);
-    mapped[lenx2-i-1] = charMap[txt.charAt(i)];
+  start = txt.length - lenx2;
+  for (var i = start; i < txt.length; i++){
+    mapped[i] = charMap[txt.charAt(i)];
   }
   const x2 = tf.tensor2d([mapped]);
   const x1 = tf.tensor2d([mapped.slice(lenx2-lenx1, lenx2)]);
