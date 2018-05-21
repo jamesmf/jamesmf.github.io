@@ -1,7 +1,5 @@
 /**
-* @license
-* Copyright 2018 Google LLC. All Rights Reserved.
-*
+* 
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -15,10 +13,6 @@
 * limitations under the License.
 * ==============================================================================
 */
-
-// This tiny example illustrates how little code is necessary build /
-// train / predict from a model in TensorFlow.js.  Edit this code
-// and refresh the index.html to quickly explore the API.
 
 // Tiny TFJS train / predict example.
 var model = "None";
@@ -67,7 +61,7 @@ async function init(){
   console.log("calling getJSON from init");
   await getJSON();
   x = inner_to_x2_x1(charMap, x2_len, x1_len);
-  document.getElementById('micro_out_div').innerText = "name:\n";
+  document.getElementById('micro_out_div').innerText = document.getElementById('rec_name').innerText;
   for (iter = 0; iter < 100; iter++){
       update_text(model, x, charRev, '', '');
   }
@@ -77,18 +71,21 @@ function inner_to_x2_x1(charMap, lenx2, lenx1){
   
   console.log(charMap);
   var name = document.getElementById('rec_name').innerText;
-  var txt = "\nname:\n\n"+name+"\n";
+  var txt = name;
   var mapped = []
   for (var i = 0; i < lenx2; i++){
     mapped.push(0);
   }
-  start = txt.length - lenx2;
+  start = lenx2 - txt.length;
   for (var i = start; i < txt.length; i++){
+    console.log(i);
+    console.log(txt.charAt(i));
     mapped[i] = charMap[txt.charAt(i)];
   }
   const x2 = tf.tensor2d([mapped]);
   const x1 = tf.tensor2d([mapped.slice(lenx2-lenx1, lenx2)]);
   x1.print();
+  x2.print();
   console.log(x1.shape);
   console.log(x2.shape);
   return [x1, x2];
