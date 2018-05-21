@@ -1,5 +1,4 @@
 <!--
-Copyright 2018 Google LLC. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,19 +14,21 @@ limitations under the License.
 ==============================================================================
 -->
 
-<!-- This tiny example illustrates how little code is necessary build
-/ train / predict from a model in TensorFlow.js.  Edit the associated
-index.js code and refresh this file in your browser to quickly
-explore the API. -->
-
-
 <html>
   <head>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.3"> </script>
+    <style type="text/css">
+        div {
+              white-space: pre; 
+            }
+    </style>
   </head>
   <body>
     <h4>Tiny TFJS example<hr/></h4>
-    <div id="rec_name">Beef Stew</div>
+    <div id="rec_name">name:
+beef stew
+
+ingredients:</div>
     <div id="micro_out_div"></div>
     <script src="./index.js"> </script>
   </body>
