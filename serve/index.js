@@ -125,7 +125,8 @@ function sample(p, T){
 
 function update_text(model, x, charRev, text_elem, prob_elem){
   var p = model.predict(x)[0].dataSync();
-  ind = sample(p, 1);
+  var T = document.getElementById('temp').value;
+  ind = sample(p, T);
   next_char = charRev[ind];
   x[0] = x[0].slice([0, 1],[1, x[0].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
   x[1] = x[1].slice([0, 1],[1, x[1].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
