@@ -62,9 +62,14 @@ async function init(){
   console.log("calling getJSON from init");
   await getJSON();
   x = inner_to_x2_x1(charMap, x2_len, x1_len);
-  for (iter = 0; iter < 100; iter++){
+  for (iter = 0; iter < 600; iter++){
       "Predicting character "+iter;
       update_text(model, x, charRev, '', '');
+      var t = document.getElementById('micro_out_div').innerText;
+      var last = t[t.length-1];
+      if (last == '$'){
+          break;
+      }
   }
 }
 
