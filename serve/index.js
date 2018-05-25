@@ -128,8 +128,8 @@ function update_text(model, x, charRev, text_elem, prob_elem){
   next_char = charRev[ind];
   x[0] = x[0].slice([0, 1],[1, x[0].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
   x[1] = x[1].slice([0, 1],[1, x[1].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
-  console.log(x[0]);
-  console.log(x[1]);
+  console.log(x[0].dataSync());
+  //console.log(x[1]);
   document.getElementById('micro_out_div').innerText += next_char;
 }
 
