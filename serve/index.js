@@ -63,7 +63,7 @@ async function init(){
   await getJSON();
   x = inner_to_x2_x1(charMap, x2_len, x1_len);
   for (iter = 0; iter < 100; iter++){
-      "Predicting character "+i;
+      "Predicting character "+iter;
       update_text(model, x, charRev, '', '');
   }
 }
