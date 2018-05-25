@@ -55,14 +55,15 @@ async function getJSON(){
 }
 
 async function init(){
+  document.getElementById('beginning_warn').innerText = "Loading model...";
   console.log("calling init");
   console.log("calling getModel from init");
   await getModel();
   console.log("calling getJSON from init");
   await getJSON();
   x = inner_to_x2_x1(charMap, x2_len, x1_len);
-  document.getElementById('micro_out_div').innerText = document.getElementById('rec_name').innerText;
   for (iter = 0; iter < 100; iter++){
+      "Predicting character "+i;
       update_text(model, x, charRev, '', '');
   }
 }
@@ -70,8 +71,10 @@ async function init(){
 function inner_to_x2_x1(charMap, lenx2, lenx1){
   
   console.log(charMap);
-  var name = document.getElementById('rec_name').innerText;
-  var txt = name;
+  var name = document.getElementById('rec_name').innerText.toLowerCase().trim();
+  var txt = "name:\n"+name+"\n\ningredients:\n\n";
+  console.log("I found the following txt to start:  "+txt);
+  document.getElementById('micro_out_div').innerText = txt;
   var mapped = []
   for (var i = 0; i < lenx2; i++){
     mapped.push(0);
@@ -126,8 +129,10 @@ function update_text(model, x, charRev, text_elem, prob_elem){
   next_char = charRev[ind];
   x[0] = x[0].slice([0, 1],[1, x[0].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
   x[1] = x[1].slice([0, 1],[1, x[1].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
+  console.log(x[0]);
+  console.log(x[1]);
   document.getElementById('micro_out_div').innerText += next_char;
 }
 
 
-init();
+//init();

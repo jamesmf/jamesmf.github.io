@@ -24,11 +24,15 @@ limitations under the License.
     </style>
   </head>
   <body>
-    <h4>Tiny TFJS example<hr/></h4>
-    <div id="rec_name">name:
-beef stew
-
-ingredients:</div>
+    <h4>Welcome to ChefBoy!<hr/></h4>
+    <div id="beginning_warn">
+The first time you load this page the model needs to load, which might take
+some time. It may be upward of 1 MB.
+    </div>
+    <form action="javascript:init()">
+        <input type="text" name="rec_name">
+        <input type="submit" value="Create New Recipe" name="submit_button">
+    </form>
     <div id="micro_out_div"></div>
     <script src="./index.js"> </script>
   </body>
