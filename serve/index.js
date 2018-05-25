@@ -78,18 +78,19 @@ function inner_to_x2_x1(charMap, lenx2, lenx1){
   for (var i = 0; i < lenx2; i++){
     mapped.push(0);
   }
-  start = lenx2 - txt.length;
+  start = Math.max(txt.length - lenx2, 0);
+  x2_start = Math.max(lenx2 - txt.length, 0);
+  console.log("start: "+start);
   for (var i = start; i < txt.length; i++){
-    console.log(i);
+    var j = i + x2_start;
+    console.log(j);
     console.log(txt.charAt(i));
-    mapped[i] = charMap[txt.charAt(i)];
+    mapped[j] = charMap[txt.charAt(i)];
   }
   const x2 = tf.tensor2d([mapped]);
   const x1 = tf.tensor2d([mapped.slice(lenx2-lenx1, lenx2)]);
   x1.print();
   x2.print();
-  console.log(x1.shape);
-  console.log(x2.shape);
   return [x1, x2];
 }
 
@@ -128,7 +129,7 @@ function update_text(model, x, charRev, text_elem, prob_elem){
   next_char = charRev[ind];
   x[0] = x[0].slice([0, 1],[1, x[0].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
   x[1] = x[1].slice([0, 1],[1, x[1].shape[1]-1]).concat(tf.tensor2d([[ind]]), 1);
-  console.log(x[0].dataSync());
+  //console.log(x[0].dataSync());
   //console.log(x[1]);
   document.getElementById('micro_out_div').innerText += next_char;
 }
