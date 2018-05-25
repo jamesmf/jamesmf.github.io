@@ -69,9 +69,8 @@ async function init(){
 }
 
 function inner_to_x2_x1(charMap, lenx2, lenx1){
-  
-  console.log(charMap);
-  var name = document.getElementById('rec_name').innerText.toLowerCase().trim();
+  var name = document.getElementById('rec_name').value.toLowerCase().trim();
+  console.log("name: "+name);
   var txt = "name:\n"+name+"\n\ningredients:\n\n";
   console.log("I found the following txt to start:  "+txt);
   document.getElementById('micro_out_div').innerText = txt;
