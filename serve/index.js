@@ -25,7 +25,7 @@ var x2_len = "None";
 async function getModel() {
   // Create a simple model.
   console.log("getting model");
-  model = await tf.loadModel("model_11/model.json");
+  model = await tf.loadModel("model_16/model.json");
   console.log("got model");
 }
 
