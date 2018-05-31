@@ -32,7 +32,7 @@ async function getModel() {
 function loadJSON(callback) {   
    var xobj = new XMLHttpRequest();
    xobj.overrideMimeType("application/json");
-   xobj.open('GET', 'model_11/prep.json', false);
+   xobj.open('GET', 'model_16/prep.json', false);
    xobj.onreadystatechange = function () {
          if (xobj.readyState == 4 && xobj.status == "200") {
            callback(xobj.responseText);
