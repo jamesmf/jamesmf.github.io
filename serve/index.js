@@ -14,7 +14,6 @@
 * ==============================================================================
 */
 
-// Tiny TFJS train / predict example.
 var model = "None";
 var prepjson = "None";
 var charRev = "None";
