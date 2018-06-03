@@ -25,14 +25,14 @@ var x2_len = "None";
 async function getModel() {
   // Create a simple model.
   console.log("getting model");
-  model = await tf.loadModel("model_16/model.json");
+  model = await tf.loadModel("model_18/model.json");
   console.log("got model");
 }
 
 function loadJSON(callback) {   
    var xobj = new XMLHttpRequest();
    xobj.overrideMimeType("application/json");
-   xobj.open('GET', 'model_16/prep.json', false);
+   xobj.open('GET', 'model_18/prep.json', false);
    xobj.onreadystatechange = function () {
          if (xobj.readyState == 4 && xobj.status == "200") {
            callback(xobj.responseText);
